@@ -6,7 +6,7 @@ import Button from "../ui/Button";
 
 const laptops = data;
 
-type Laptop = {
+export type Laptop = {
   id: string;
   make: string;
   name: string;
