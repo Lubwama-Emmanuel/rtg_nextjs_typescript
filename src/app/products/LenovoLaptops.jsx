@@ -1,3 +1,4 @@
+"use client";
 import { useLoaderData } from "react-router-dom";
 import Hero from "../components/Hero";
 import ProductsSection from "../ui/ProductsSection";
