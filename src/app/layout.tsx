@@ -1,10 +1,16 @@
 import Header from "@/components/Header";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Shrikhand } from "next/font/google";
 import Footer from "@/ui/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
+const shrikhand = Shrikhand({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-shrikhand",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Shop With Rex",
