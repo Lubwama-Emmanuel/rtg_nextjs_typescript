@@ -22,8 +22,8 @@ export default function ProductCard({
     <div
       className={
         larger
-          ? `flex items-center sm:hover:scale-110`
-          : `flex flex-col items-center sm:hover:scale-110`
+          ? `flex items-center`
+          : `flex flex-col bg-emerald-50 shadow-md items-center hover:shadow-lg rounded-xl`
       }
       // onClick={() => <Navigate to="/products/60" />}
     >
@@ -37,10 +37,14 @@ export default function ProductCard({
           className="w-[100%]"
         />
       </div>
-      <div className="">
+      <div className="" onClick={() => }>
         <h3 className="sm:text-md text-center text-sm uppercase">{name}</h3>
-        <h3 className="text-sm">Ugx 3,000,000</h3>
-        <Link href={`/products/${id}`}>To</Link>
+        <div className="flex items-center justify-around">
+          <h3 className="text-sm">Ugx 3,000,000</h3>
+          <button>
+            <Link href={`/products/${id}`}>To</Link>
+          </button>
+        </div>
       </div>
     </div>
   );

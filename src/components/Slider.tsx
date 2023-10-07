@@ -56,8 +56,8 @@ export default function Slider() {
           <Image
             src={photo}
             alt={name}
-            width={200}
-            height={200}
+            width={500}
+            height={500}
             className="w-3/4"
           />
         </div>

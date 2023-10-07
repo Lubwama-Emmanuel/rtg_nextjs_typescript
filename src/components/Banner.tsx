@@ -29,8 +29,8 @@ export default function Banner() {
           <Image
             src="/images/gaming.png"
             alt="gaming laptop"
-            width={200}
-            height={200}
+            width={500}
+            height={500}
             className="w-[100%]"
           />
         </div>
@@ -46,8 +46,8 @@ export default function Banner() {
           <Image
             src="/images/accessories.png"
             alt="accessories"
-            width={200}
-            height={200}
+            width={500}
+            height={500}
             className="w-[100%]"
           />
         </div>
