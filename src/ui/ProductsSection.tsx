@@ -1,15 +1,26 @@
-/* eslint-disable react/prop-types */
+"use client";
 import { useState } from "react";
 import FilterButton from "./FilterButton";
 import Products from "../components/Products";
 
-export default function ProductsSection({ filters, isFilterToTop, data }) {
+type Filter = {
+  id: number;
+  filter: string;
+};
+interface ProductsSectionProps {
+  filters: Filter[];
+  data: [];
+}
+
+export default function ProductsSection({
+  filters,
+  data,
+}: ProductsSectionProps) {
   const [activeFilter, setActiveFilter] = useState(0);
 
   return (
     <section className="m-auto max-w-[98%]">
       <Filters
-        isFilterToTop={isFilterToTop}
         activeFilter={activeFilter}
         setActiveFilter={setActiveFilter}
         filters={filters}
@@ -19,14 +30,16 @@ export default function ProductsSection({ filters, isFilterToTop, data }) {
   );
 }
 
-function Filters({ isFilterToTop, activeFilter, setActiveFilter, filters }) {
+interface FiltersProps {
+  activeFilter: number;
+  setActiveFilter: (state: number) => void;
+  filters: Filter[];
+}
+
+function Filters({ activeFilter, setActiveFilter, filters }: FiltersProps) {
   const base = `flex gap-2 sm:gap-5 overflow-x-auto justify-between py-7 bg-white`;
   return (
-    <div
-      className={
-        isFilterToTop ? `${base} fixed left-0 right-0 top-14 z-20` : base
-      }
-    >
+    <div>
       {filters.map((el, index) => (
         <FilterButton
           key={el.id}
@@ -40,9 +53,14 @@ function Filters({ isFilterToTop, activeFilter, setActiveFilter, filters }) {
   );
 }
 
-function ProductsList({ activeFilter, data }) {
+interface ProductListProps {
+  activeFilter: string;
+  data: [];
+}
+
+function ProductsList({ activeFilter, data }: ProductListProps) {
   return (
-    <div className="">
+    <div className="space-x-5">
       <Products data={data} filter={activeFilter} />
     </div>
   );

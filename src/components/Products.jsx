@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
 import ProductCard from "../ui/ProductCard";
 
@@ -16,13 +15,13 @@ export default function Products({ filter = "all products", data = [] }) {
       {filteredData.length > 0 && (
         <div className="flex space-x-2">
           <button
-            className={isGrid && `text-emerald-400`}
+            className={isGrid ? `text-emerald-400` : ``}
             onClick={() => setIsGrid(true)}
           >
             G
           </button>
           <button
-            className={!isGrid && `text-emerald-400`}
+            className={!isGrid ? `text-emerald-400` : ``}
             onClick={() => setIsGrid(false)}
           >
             L

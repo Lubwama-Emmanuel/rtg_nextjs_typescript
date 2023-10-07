@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 type Laptop = {
   name: string;
@@ -17,6 +18,7 @@ export default function ProductCard({
   larger = false,
 }: ProductCardProps) {
   const { name, mainImage, _id: id } = laptop;
+  const router = useRouter();
 
   return (
     <div
@@ -25,7 +27,7 @@ export default function ProductCard({
           ? `flex items-center`
           : `flex flex-col bg-emerald-50 shadow-md items-center hover:shadow-lg rounded-xl`
       }
-      // onClick={() => <Navigate to="/products/60" />}
+      onClick={() => router.push(`/products/${id}`)}
     >
       <div className="flex items-center justify-center">
         {/* <img src={mainImage} className="w-32 sm:w-64" /> */}
@@ -34,10 +36,10 @@ export default function ProductCard({
           alt="gaming laptop"
           width={200}
           height={200}
-          className="w-[100%]"
+          className="w-32 sm:w-64"
         />
       </div>
-      <div className="" onClick={() => }>
+      <div>
         <h3 className="sm:text-md text-center text-sm uppercase">{name}</h3>
         <div className="flex items-center justify-around">
           <h3 className="text-sm">Ugx 3,000,000</h3>
