@@ -1,7 +1,6 @@
 "use client";
-import { useLoaderData } from "react-router-dom";
-import Hero from "../components/Hero";
-import ProductsSection from "../ui/ProductsSection";
+import Hero from "../../../components/Hero";
+import ProductsSection from "../../../ui/ProductsSection";
 
 const lenovoLaptops = [
   {
@@ -47,11 +46,9 @@ const lenovoLaptops = [
 ];
 
 export default function LenovoLaptops() {
-  const data = useLoaderData();
   return (
     <div>
       <Hero />
-      <ProductsSection data={data} filters={lenovoLaptops} />
     </div>
   );
 }
