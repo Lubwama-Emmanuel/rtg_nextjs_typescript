@@ -25,7 +25,7 @@ export default function ProductCard({
       className={
         larger
           ? `flex items-center`
-          : `flex flex-col bg-emerald-50 shadow-md items-center hover:shadow-lg rounded-xl`
+          : `flex flex-col bg-emerald-50 w-64 shadow-md items-center hover:shadow-lg rounded-xl py-5 px-3 b`
       }
       onClick={() => router.push(`/products/${id}`)}
     >
