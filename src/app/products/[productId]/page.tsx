@@ -21,8 +21,8 @@ interface ProductOverviewProps {
 }
 
 export default function ProductOverview({ params }: ProductOverviewProps) {
-  console.log("params", params);
   const [activeContainer, setActiveContainer] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const [laptop, setLaptop] = useState({
     name: "",
     mainImage: "",
@@ -32,38 +32,23 @@ export default function ProductOverview({ params }: ProductOverviewProps) {
 
   useEffect(() => {
     async function getLaptop(id: string) {
+      setIsLoading(true);
       const res = await fetch(
         `https://rex-tech-guy.onrender.com/api/v1/laptops/getLaptop/${id}`
       );
 
       const data = await res.json();
       setLaptop(data.laptop);
+      // setIsLoading(false);
     }
 
     getLaptop(params.productId);
   }, [params]);
 
-  console.log("state laptop", laptop);
   const { name, mainImage, desc, otherImages } = laptop;
   const data = [mainImage, ...otherImages];
 
   const [activeImage, setActiveImage] = useState(data[0]);
-
-  // function moveContainer() {
-  //   if (activeContainer === 3) {
-  //     setActiveContainer(0);
-  //   } else {
-  //     setActiveContainer((value) => value + 1);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     moveContainer();
-  //   }, 2000);
-
-  //   return () => clearInterval(interval);
-  // });
 
   function handleMouseEnter(newImage: string, index: number) {
     setActiveContainer(index);
@@ -73,35 +58,39 @@ export default function ProductOverview({ params }: ProductOverviewProps) {
   return (
     <div className="mx-auto mb-10 mt-20 grid max-w-[97%] items-center gap-10 sm:max-w-[90%] sm:grid-cols-[1fr_2fr]">
       <div className="">
-        {/* <img src={activeImage} className="w-80" /> */}
-        <Image
-          src={mainImage}
-          alt={name}
-          width={500}
-          height={500}
-          className="w-80"
-        />
-        <div className="grid w-[90%] grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))]">
-          {data.map((laptop, index) => (
-            <div
-              onMouseEnter={() => handleMouseEnter(laptop, index)}
-              className={
-                activeContainer === index
-                  ? `flex justify-center rounded-md bg-gradient-to-r from-emerald-600 to-emerald-800 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-800`
-                  : `flex justify-center rounded-md  hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-800`
-              }
-              key={Math.random()}
-            >
-              {/* <img src={laptop} className="w-20" /> */}
-              <Image
-                src={mainImage}
-                alt="gaming laptop"
-                width={500}
-                height={500}
-                className="w-[100%]"
-              />
-            </div>
-          ))}
+        <div className=" flex items-center justify-center h-60">
+          <Image
+            src={activeImage}
+            alt={name}
+            width={224}
+            height={224}
+            className="w-80"
+          />
+        </div>
+        <div className="items-center flex justify-center">
+          {}
+          <div className="grid w-[90%] grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] ">
+            {data.map((laptop, index) => (
+              <div
+                onMouseEnter={() => handleMouseEnter(laptop, index)}
+                className={
+                  activeContainer === index
+                    ? `flex justify-center rounded-md bg-gradient-to-r from-emerald-600 to-emerald-800 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-800`
+                    : `flex justify-center rounded-md  hover:bg-gradient-to-r hover:from-emerald-600 hover:to-emerald-800`
+                }
+                key={Math.random()}
+              >
+                {/* <img src={laptop} className="w-20" /> */}
+                <Image
+                  src={laptop}
+                  alt="gaming laptop"
+                  width={500}
+                  height={500}
+                  className="w-20"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="space-y-3">
@@ -117,13 +106,3 @@ export default function ProductOverview({ params }: ProductOverviewProps) {
     </div>
   );
 }
-
-// async function getLaptop(params) {
-//   console.log(params);
-
-//   return {
-//     laptop: {
-//       name: "laptop",
-//     },
-//   };
-// }
