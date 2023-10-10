@@ -20,11 +20,13 @@ export default function ProductsSection({
 
   return (
     <section className="m-auto max-w-[98%]">
-      <Filters
-        activeFilter={activeFilter}
-        setActiveFilter={setActiveFilter}
-        filters={filters}
-      />
+      <div>
+        <Filters
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+          filters={filters}
+        />
+      </div>
       <ProductsList data={data} activeFilter={filters[activeFilter].filter} />
     </section>
   );
@@ -39,7 +41,7 @@ interface FiltersProps {
 function Filters({ activeFilter, setActiveFilter, filters }: FiltersProps) {
   const base = `flex gap-2 sm:gap-5 overflow-x-auto justify-between py-7 bg-white`;
   return (
-    <div>
+    <div className="flex gap-2 sm:gap-5 overflow-x-auto justify-between py-7 bg-white">
       {filters.map((el, index) => (
         <FilterButton
           key={el.id}
