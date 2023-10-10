@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -31,7 +30,6 @@ export default function ProductCard({
       onClick={() => router.push(`/products/${id}`)}
     >
       <div className="flex items-center justify-center">
-        {/* <img src={mainImage} className="w-32 sm:w-64" /> */}
         <Image
           src={mainImage}
           alt="gaming laptop"
@@ -44,9 +42,6 @@ export default function ProductCard({
         <h3 className="sm:text-md text-center text-sm uppercase">{name}</h3>
         <div className="flex items-center justify-around">
           <h3 className="text-sm">Ugx 3,000,000</h3>
-          <button>
-            <Link href={`/products/${id}`}>To</Link>
-          </button>
         </div>
       </div>
     </div>
