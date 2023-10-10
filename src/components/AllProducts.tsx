@@ -32,8 +32,8 @@ const data = [
 export default function AllProducts() {
   return (
     <section className="m-auto mb-20 w-[95%]">
-      <ComponentHead title={"All Products"} link={"/products/allProducts"} />
-      <div className="grid grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))]">
+      <ComponentHead title={"All Products"} link={"/products"} />
+      <div className="grid grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] gap-5">
         {data.map((el) => (
           <ProductCard key={Math.random()} laptop={el} larger={false} />
         ))}
